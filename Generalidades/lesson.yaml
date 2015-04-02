@@ -1,0 +1,594 @@
+- Class: meta
+  Course: Introducción a la Estadística
+  Lesson: Generalidades
+  Author: Nick Carchedi; Alcides Chaux, M.D.
+  Type: Standard
+  Organization:
+  Version: 1.0.0
+
+- Class: text
+  Output: En un sentido amplio, un científico es aquel que utiliza un método sistemático para adquirir nuevos conocimientos. De manera más importante, un científico busca responder preguntas o resolver problemas importantes a través de observaciones y métodos cuidadosos. Estas observaciones, recolectadas a partir de experimentos, encuestas, notas de campo, etc., se conocen como DATOS. La estadística es el estudio de cuál es el mejor procedimiento para recolectar, analizar y llegar a conclusiones a partir de estos datos.
+
+- Class: text
+  Output: Una vez que se ha planteado una pregunta, o se ha identificado un problema, el siguiente paso lógico es intentar responder la pregunta. Desafortunadamente, sin ninguna información adicional, es muy difícil responder una pregunta o diagnosticar un problema. Es entonces cuando entra en escena la recolección de datos! El tener un conjunto de observaciones, o datos, relacionadas con la pregunta ayudará a revelar una respuesta.
+
+- Class: text
+  Output: Pero ... Cómo exactamente se recolectan datos que puedan ser útiles?
+
+- Class: text
+  Output: Recuerda, cuando lleva a cabo una investigación, un científico busca responder una pregunta, una que usualmente está dirigida a una población específica. Esta población no tiene que ser una población humana, como se entiende habitualmente por esta palabra. Piensa en esta población como un grupo de entidades - gente, animales, autos, salarios, etc. - que es estudiada por el científico.
+
+- Class: text
+  Output: Desafortunadamente, es a menudo muy difícil, si no imposible, recolectar datos de una población completa. No sólo puede consumir mucho tiempo, también puede resultar en un uso ineficiente de recursos. En su lugar, los científicos se enfocan a una MUESTRA de la población. Esta muestra poblacional se selecciona de tal manera a que es REPRESENTATIVA de la población mayor en cuestión. En términos matemáticos, esta población muestral es conocida como un subgrupo de la población enfocada.
+
+- Class: figure
+  Output: Aquí se muestra una ilustración visual sencilla de cómo una muestra se relaciona con una población.
+  Figure: mod1_pop_vs_samp.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Evaluaremos rápidamente tu comprensión del término "representativo". Si estuvieses interesado en estudiar la salud de hombres saludables viviendo en tu país, con edades entre 18 y 25 años, cuál sería una muestra más representativa de la población enfocada? Una muestra de 25 hombres que viven en un asilo de ancianos cercano? O una muestra de 25 hombres que son estudiantes de una Universidad local?
+  CorrectAnswer: Estudiantes universitarios
+  AnswerChoices: Estudiantes universitarios; Hombres viviendo en el asilo
+  AnswerTests: omnitest(correctVal='Estudiantes universitarios')
+  Hint: Dado que tu población enfocada técnicamente incluye todos los hombres de 18 a 25 años que viven en tu país, cuál de estas dos muestras poblacionales coincide mejor con la población de interés?
+
+- Class: text
+  Output: Ahora que ya tienes una noción básica de cómo un científico recolecta datos, el siguiente paso es aprender qué hacer con todos estos datos. Mientras que los datos sin procesar pueden contener información útil, esta información usualmente es específica para cada individuo en la muestra poblacional. El científico busca descubrir patrones y correlaciones entre los sujetos en la muestra poblacional, de modo a quitar conclusiones acerca de la población enfocada en su totalidad.
+
+- Class: mult_question
+  Output: Para verificar si comprendiste algunos de los conceptos de recolección de datos que hemos visto hasta ahora, intenta completar la siguiente oración. "Un estadístico recolecta datos a partir de una __________ con el fin de generalizar los resultados a una __________ por completo."
+  CorrectAnswer: muestra, población
+  AnswerChoices: muestra, población; población, muestra
+  AnswerTests: omnitest(correctVal='muestra, población')
+  Hint: El primer término es un subgrupo del segundo.
+
+- Class: text
+  Output: Para realmente obtener tanta información útil como sea posible a partir de los datos, es importante aprender a analizar un conjunto de datos como lo haría un estadístico!
+
+- Class: text
+  Output: Ante de sumergirnos profundamente en los temas específicos de visualización de datos y análisis de datos sencillos, quisiera presentarles un recurso muy útil. A través de nuestras lecciones estaré usando como referencia el libro (en inglés) online gratuito "OpenIntro Statistics" escrito por David M. Diez, Christopher D. Barr, y Mine Cetinkaya-Rundel. Si en algún momento sientes que necesitas una explicación más detallada de los conceptos, puedes acceder ali libro completo en http://www.openintro.org/stat/down/OpenIntroStatSecond.pdf.
+
+- Class: text
+  Output: Además de este libro de texto, tendrás la opción de visualizar videos cortos (en inglés) acerca de diversos tópicos a medida que vayas progresando a través de las lecciones. Sigamos avanzando!
+
+- Class: text
+  Output: Hoy en día, el análisis estadístico está inseparablemente ligado a la informática. A medida que vamos recolectando más y más datos y enfrentando problemas estadísticos más complejos, debemos utilizar programas informáticos especializados para asistirnos en la tarea de entender estos datos de una manera más profunda y completa.
+
+- Class: text
+  Output: Existen muchos programas informáticos disponibles capaces de llevar a cabo estas tareas de análisis estadísticos. Sin embargo, nosotros nos concentraremos en una herramienta en particular llamada R. Existen muchas buenas razones para usar R, siendo las más importantes su alta calidad, gratuidad en el uso, y disponibilidad para cualquiera que quiera usarlo. Estaré usando R como una herramienta de enseñanza para los tópicos que desarrollaremos y antes de que te des cuenta, conocerás R lo suficientemente bien como para realizar análisis de datos por tu cuenta.
+
+- Class: text
+  Output: Aprender R es como aprender cualquier otro lenguaje. Hay ciertas reglas que debes seguir si quieres obtener los resultados deseados. Revisemos algunas de estas reglas básicas ahora, de modo a que puedas empezar a usar R lo antes posible.
+
+- Class: text
+  Output: Digamos que queremos almacenar el valor '5' en una nueva variable 'x'. La forma en la que haríamos ésto en R sería tipeando 'x <- 5'. El OPERADOR DE ASIGNACIÓN es el '<-' entre 'x' y '5,' que se lee como 'x recibe el valor 5'. Es simplemente un signo de 'menor que' seguido de un guión. Ahora es tu turno de intentarlo.
+
+- Class: cmd_question
+  Output: Almacena el valor '100' en una nueva variable llamada 'y'.
+  CorrectAnswer: y <- 100
+  AnswerTests: omnitest(correctExpr='y <- 100')
+  Hint: Usa la misma sintaxis que acabamos de presentar (v.g., 'x <- 5'). Nota que hay un espacio antes y después del operador de asignación.
+
+- Class: text
+  Output: Además de almacenar un número único en una variable, puedes almacenar también texto, vectores, matrices, e incluso conjuntos de datos completos, lo que los usuarios de R llaman MARCO DE DATOS. Una vez que has almacenado algo en una variable, puedes luego usar esa variable por su nombre cuando lleves a cabo otras operaciones.
+
+- Class: text
+  Output: Cada columna de un marco de datos contiene los datos de una variable. Para accecer los valores de una variable particular en R, usamos la sintaxis 'datos.nombre$nombre.variable'. El signo de dólar es colocado después del nombre del conjunto de datos y antes del nombre de la variable, sin espacios. Por ejemplo, digamos que queremos acceder a los datos de la variable 'frutas' del conjunto de datos 'comidas'. En R, haríamos ésto tipeando 'comidas$frutas'.
+
+- Class: cmd_question
+  Output: Veamos si puedes hacer ésto por tu cuenta. Tipea el comando para acceder a los datos de la variable 'tipo' del conjunto de datos 'autos'. Estaremos trabajando bastante con el conjunto de datos 'autos' más adelante, pero por ahora no te preocupes mucho por los resultados que verás.
+  CorrectAnswer: autos$tipo
+  AnswerTests: omnitest(correctExpr='autos$tipo')
+  Hint: Tipea el nombre de tu conjunto de datos, luego un signo de dólar (i.e., '$'), y finalmente el nombre de la variable sin espacios intermedios.
+
+- Class: text
+  Output: R tiene muchas funciones internas que puedes usar para llevar al cabo análisis. A medida que avancemos a través de estas lecciones, te mostraré muchas de estas funciones a la par que se vuelvan relevantes. Para usar una función en particular, la sintaxis es usualmente algo tipo 'NombreFuncion(variable)'. Algunas de las funciones más avanzadas requieren que pases más información en forma de argumentos. Estos argumentos no son más que entradas adicionales colocadas dentro de los paréntesis.
+
+- Class: text
+  Output: Probemos una función muy sencilla en la variable 'y' que acabas de crear más arriba.
+
+- Class: cmd_question
+  Output: Dado que has almacenado el valor 100 en la variable 'y', tipea 'sqrt(y)' para obtener la raíz cuadrada de 100.
+  CorrectAnswer: sqrt(y)
+  AnswerTests: omnitest(correctExpr='sqrt(y)')
+  Hint: Tipea 'sqrt(y)' sin las comillas simples y presiona Enter.
+
+- Class: cmd_question
+  Output: Ahora, usemos la misma función pero esta vez intenta almacenar 'sqrt(y)' en una nueva variable 'z' usando el operador de asignación que acabas de aprender.
+  CorrectAnswer: z <- sqrt(y)
+  AnswerTests: omnitest(correctExpr='z <- sqrt(y)')
+  Hint: Asigna 'sqrt(y)' a 'z'.
+
+- Class: text
+  Output: Si alguna vez te sientes inseguro acerca de cómo funciona una función en particular, puedes buscar la respuesta (en inglés) en los archivos de ayuda de R. La sintaxis para hacer esto es 'help(NombreFuncion)' o simplemente '?NombreFuncion' sin espacios entre el '?' y 'NombreFuncion', donde 'NombreFuncion' es el nombre de la función sobre la que quieres obtener ayuda. Si, en vez, no estás seguro de la función que estás buscando, puedes realizar una búsqueda general a través de todas las funciones internas de R usando 'help.search(término_de_interés)' o simplemente '??término_de_interés', donde 'término_de_interés' es la palabra clave que quieres utilizar como criterio de búsqueda.
+
+- Class: cmd_question
+  Output: Visualiza el archivo de ayuda para la función 'sqrt'. Usa la versión abreviada que acabo de mostrarte. Nota cómo salta el archivo de ayuda. Siéntete libre de tomarte algunos minutos para revisarlo. Te sentirás más a gusto con los archivos de ayuda de R a medida que vayas teniendo más experiencia en su uso.
+  CorrectAnswer: ?sqrt
+  AnswerTests: omnitest(correctExpr='?sqrt')
+  Hint: No incluyas paréntesis o nombres de variables cuando accedas a los archivos de ayuda. Simplemente tipea '?NombreFuncion'.
+
+- Class: text
+  Output: Además de las funciones internas de R, R también incluye muchos conjuntos de datos de fácil acceso y uso. Usaré un conjunto de datos único en cada lección para ayudar a transmitir los conceptos más importantes.
+
+- Class: text
+  Output: En esta lección usaré el mismo conjunto de datos 'autos' que se usa en el capítulo 1 del libro "OpenIntro Statistics". Este conjunto de datos contiene 54 filas y 6 columnas. Para cada uno de los 54 autos de 1993 están disponibles las variables 'tipo' (tipo de auto), 'precio' (precio en USD), 'mpgCiudad' (millas por galón en ciudad), 'trenManejo' (tren de manejo), 'pasajeros' (número de pasajeros), y 'peso' (peso en libras).
+
+- Class: cmd_question
+  Output: Tipea 'autos' para visualizar el conjunto de datos por completo. Verás que cada fila representa un auto y cada columna contiene una de las variables que acabamos de mencionar. Ya viste los contenidos de la variable 'tipo' cuando ingresaste 'autos$tipo'.
+  CorrectAnswer: autos
+  AnswerTests: omnitest(correctExpr='autos')
+  Hint: Simplemente tipea 'autos' y presiona Enter.
+
+- Class: text
+  Output: He escogido este conjunto de datos por algunas razones. Para transmitir efectivamente los conceptos claves de esta lección, quería un conjunto de datos que no fuese ni muy grande ni muy pequeño, uno que tenga al menos dos variables numéricas (una continua y otra discreta) y una variable categórica.
+
+- Class: text
+  Output: Una VARIABLE NUMÉRICA CONTINUA es aquella que puede asumir cualquier valor dentro del rango posible de valores. En el conjunto de datos 'auto' el precio, millas por galón en ciudad y peso son todas variables continuas, ya que no existe restricción inherente a los valores posibles de cada una de estas tres variables (excepto números negativos, por supuesto!). Más aún, los valores no tiene que ser necesariamente números enteros, ya que pueden darse valores decimales, dependiendo de la precisión y nivel de exactitud con las que midamos estas variables.
+
+- Class: text
+  Output: Por el otro lado, una VARIABLE NUMÉRICA DISCRETA es una variable que puede asumir un valor de un número limitado, y usualmente predeterminado, de valores posibles. Por ejemplo, en el conjunto de datos 'autos' el número de pasajeros es una variable numérica discreta, ya que la capacidad de pasajeros que puede alojar un auto necesariamente corresponde a un número entero.
+
+- Class: text
+  Output: Finalmente, una VARIABLE CATEGÓRICA es una variable que, en vez de asumir un valor fijo, se adscribe a una categoría descriptiva predeterminada. En el conjunto de datos 'autos' el tipo de tren de manejo es una variable categórica, ya que cada auto puede tener sólo un tipo de tren de manejo.
+
+- Class: text
+  Output: Pongamos a prueba tu conocimiento acerca de estos tipos distintos de variables. Pretende que sales a dar una caminata por la ciudad.
+
+- Class: mult_question
+  Output: La distancia que caminas sería un ejemplo de cuál tipo de variable?
+  CorrectAnswer: Continua
+  AnswerChoices: Continua; Discreta; Categórica
+  AnswerTests: omnitest(correctVal='Continua')
+  Hint: Esta variable es una que puede asumir cualquier valor dentro del rango del problema considerado.
+
+- Class: mult_question
+  Output: Los tipos de edificios que vas pasando por el camino serían qué tipo de variable?
+  CorrectAnswer: Categórica
+  AnswerChoices: Continua; Discreta; Categórica
+  AnswerTests: omnitest(correctVal='Categórica')
+  Hint: Esta variable es una que se adscribe a una categoría predeterminada.
+
+- Class: mult_question
+  Output: El número de personas que vas pasando sería un ejemplo de qué tipo de variable?
+  CorrectAnswer: Discreta
+  AnswerChoices: Continua; Discreta; Categórica
+  AnswerTests: omnitest(correctVal='Discreta')
+  Hint: Esta variable es una que puede tomar valores posibles limitados y usualmente predeterminados.
+
+- Class: text
+  Output: Ya estás listo para aprender acerca de visualización de datos!
+
+- Class: text
+  Output: Ante de que un estadístico se involucre en un análisis exhaustivo del conjunto de datos, usualmente considera útil visualizar primero los datos. Organizando los datos en un gráfico (o plot), un estadístico es capaz de explorar y sumarizar algunas propiedades básicas del conjunto de datos. La disciplina que describe cuantitativamente las propiedades principales de un conjunto de datos se conoce como ESTADÍSTICA DESCRIPTIVA. En lo que viene a continuación, estaré presentando concurrentemente técnicas para la visualización de datos así como las medidas de descripción estadística asociadas.
+
+- Class: text
+  Output: El tipo más simple de plot es un gráfico de puntos, el que se utiliza para transmitir visualmente los valores de una variable. En un gráfico de puntos, existe sólo un eje horizontal x, y los valores de los datos son representados como puntos por encima de este eje. Dado que los gráficos de puntos muestran efectivamente el valor numérico específico de la variable para cada individuo en el conjunto de datos, es una herramienta particularmente útil para conjuntos de datos pequeños.
+
+- Class: figure
+  Output: He aquí un gráfico de puntos usando la variable 'precio' de nuestro conjunto de datos 'autos'. Como podrías notar, el precio se reporta en el eje x en $1000s, y cada punto por encima del eje representa el precio de uno de los 54 autos en nuestro conjunto de datos.
+  Figure: mod1_dotplot.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Observando a este gráfico de puntos, la densidad de puntos parece ser mayor alrededor de cuál rango de precios (en $1000s)?
+  CorrectAnswer: 7-13
+  AnswerChoices: 7-13; 18-25; 33-40
+  AnswerTests: omnitest(correctVal='7-13')
+  Hint: Mira la zona del gráfico donde los puntos están más juntos y se ven más oscuros.
+
+- Class: text
+  Output: Esta discusión acerca del gráfico de puntos nos lleva a nuestro primer estadístico descriptivo, el RANGO ("range" en inglés) de un conjunto de datos. Así como indica el nombre, el rango es la diferencia entre el valor máximo y el mínimo del conjunto de datos.
+
+- Class: cmd_question
+  Output: Ahora que ya sabes lo que mide el rango, mira nuevamente a nuestro gráficos de puntos. Usando el comando de R 'range(autos$precio)', determina los valores exactos para el mínimo y el máximo del conjunto de datos, respectivamente.
+  CorrectAnswer: range(autos$precio)
+  AnswerTests: omnitest(correctExpr='range(autos$precio)')
+  Hint: Tipea 'range(autos$precio)' y presiona Enter para ver los precios mínimo y máximo.
+
+- Class: figure
+  Output: El primer número dado es el mínimo y el segundo número dado es el máximo. Para representar estos dos valores visualmente, he dibujado dos líneas en el gráfico de puntos. Como puedes ver, la línea vertical roja en el extremo izquierdo muestra donde el valor mínimo se ubica. La línea vertical roja en el extremo derecho muestra donde el valor máximo se ubica. El rango de los datos es definido como la distancia entre estas dos líneas rojas.
+  Figure: mod1_dotplot_add.R
+  FigureType: addition
+
+- Class: text
+  Output: Una de las medidas de estadística descriptiva más comunes es la MEDIDA DE TENDENCIA CENTRAL. Para un conjunto de datos específico, la TENDENCIA CENTRAL busca localizar un valor central o un valor típico para cierta variable. También puede referenciarse como el PROMEDIO o el CENTRO de los datos. Las medidas de tendencia central más comunes son la MEDIA, la MEDIANA, y la MODA de un conjunto de datos. En las siguientes secciones, continuaré presentando los distintos tipos de gráficos y te mostraré cómo calcular y visualizar estas medidas de tendencia central.
+
+- Class: video
+  Output: Te gustaría mirar un breve video en YouTube (en inglés) acerca de la media, la mediana, y la moda?
+  VideoLink: http://youtu.be/h8EYEJ32oQ8
+
+- Class: text
+  Output: La MEDIA ARITMÉTICA, o simplemente la MEDIA ("mean" en inglés) o el PROMEDIO, es la medida más común del centro de los datos. Para calcular la media, debes primero sumar todos los valores de interés, y luego dividir esa suma por el total del número de valores usados en la suma.
+
+- Class: cmd_question
+  Output: Usando el comando en R 'sum(autos$precio)', puedes decirme la suma ("sum" en inglés) de los precios de los 54 autos en nuestro conjunto de datos?
+  CorrectAnswer: sum(autos$precio)
+  AnswerTests: omnitest(correctExpr='sum(autos$precio)')
+  Hint: Tipea 'sum(autos$precio)' y presiona Enter.
+
+- Class: cmd_question
+  Output: Ahora divide este número, usando el símbolo '/' como el operador de división, por el número total de valores en el conjunto de datos. Cuál es este valor?
+  CorrectAnswer: 19.99259
+  AnswerTests: omnitest(correctVal='19.99259')
+  Hint: Tipea el resultado de dividir 1079.6 por 54.
+
+- Class: cmd_question
+  Output: Ahora comprendes el proceso para calcular la media. Por suerte, R contiene una función interna para completar automáticamente este proceso. Tipea el comando en R 'mean(autos$precio)'.
+  CorrectAnswer: mean(autos$precio)
+  AnswerTests: omnitest(correctExpr='mean(autos$precio)')
+  Hint: Simplemente tipea mean(autos$precio) y presiona Enter.
+
+- Class: text
+  Output: Nota que este valor, 19.99259, es exactamente el mismo que obtuviste más arriba cuando calculaste la media por tu cuenta sin usar la función mean()!
+
+- Class: text
+  Output: Nuestra segunda medida de tendencia central es conocida como la MEDIANA ("median" en inglés). Como su nombre indica, la mediana es el 'valor del medio' de nuestro conjunto de datos.
+
+- Class: text
+  Output: Para mostrar cómo hallar la mediana, volcaremos nuestra atención al dato de millas por galón en ciudad ('mpgCiudad'), dado que estos datos corresponden a números redondeados.
+
+- Class: cmd_question
+  Output: He almacenado los valores de la variable 'mpgCiudad' de SÓLO los vehículos de tamaño mediano en una nueva variable llamada 'mpg.mediano', que puedes visualizar tipeando 'mpg.mediano' abajo. Inténtalo!
+  CorrectAnswer: mpg.mediano
+  AnswerTests: omnitest(correctExpr='mpg.mediano')
+  Hint: Simplemente tipea 'mpg.mediano' y presiona Enter.
+
+- Class: cmd_question
+  Output: En R, puedes ordenar ("sort" en inglés) los valores de tus datos de menor a mayor usando la función sort(). Intenta usar el comando 'sort(mpg.mediano)' para ordenar los valores almacenados en 'mpg.mediano'.
+  CorrectAnswer: sort(mpg.mediano)
+  AnswerTests: omnitest(correctExpr='sort(mpg.mediano)')
+  Hint: Tipea 'sort(mpg.mediano)' y presiona Enter.
+
+- Class: cmd_question
+  Output: Intenta asignar 'sort(mpg.mediano)' a una nueva variable llamada 'mpg.ordenado' usando el operador de asignación que presentamos antes.
+  CorrectAnswer: mpg.ordenado <- sort(mpg.mediano)
+  AnswerTests: omnitest(correctExpr='mpg.ordenado <- sort(mpg.mediano)')
+  Hint: Tipea 'mpg.ordenado <- sort(mpg.mediano)' y presiona Enter.
+
+- Class: text
+  Output: Cuando el número total de valores es impar, encontrar la mediana o valor "del medio" es muy fácil. Sin embargo, si el número total de valores es par, no hay realmente ningún valor "del medio" entre los datos. En este caso, debes calcular el promedio de los dos valores medios que están contenidos en los datos. En otras palabras, en el caso de un número par de valores, la MEDIANA corresponde a la MEDIA de los dos valores medios del conjunto de datos.
+
+- Class: cmd_question
+  Output: Échale un vistazo a los datos ordenados que acabas de generar. Cuál crees que es la mediana?
+  CorrectAnswer: 19
+  AnswerTests: omnitest(correctExpr='19')
+  Hint: Recuerda que, dado que tenemos un número par de valores aquí, la MEDIANA es simplemente la MEDIA de los dos valores del medio.
+
+- Class: text
+  Output: Aunque tenemos un número par de valores en los datos, y por lo tanto dos valores medios, ambos valores son 19, por lo que su promedio es también 19.
+
+- Class: text
+  Output: Ahora que entiendes lo que sucede detrás del escenario cuando se calcula la mediana de un conjunto de datos, te mostraré una forma más rápida de obtener la misma respuesta usando el comando en R 'median'. Y lo bueno de proceder de esta manera es que no necesitamos ordenar los datos antes de hacerlo.
+
+- Class: cmd_question
+  Output: Intenta calcular la media de nuestra variable original sin ordenar 'mpg.mediano' usando la función de R interna median().
+  CorrectAnswer: median(mpg.mediano)
+  AnswerTests: omnitest(correctExpr='median(mpg.mediano)')
+  Hint: Si quisiéramos la media de 'x' tipearíamos 'median(x)'.
+
+- Class: text
+  Output: Ahora has aprendido acerca del RANGO, MEDIA, y MEDIANA de un conjunto de datos, y como calcular el valor de cada uno de ellos usando sencillos comandos en R.
+
+- Class: cmd_question
+  Output: Otro comando útil en R es el comando 'summary' ("sumario"). Como verás, este comando reporta los valores del mínimo, mediana, media, y máximo de un conjunto de datos en particular. Por ahora, no hagas caso de los valores etiquetados como '1st Qu.' y '3rd Qu.'. Ya llegaremos a los mismos pronto! Intenta tipeando 'summary(autos$mpgCiudad)' para ver lo que hace exactamente.
+  CorrectAnswer: summary(autos$mpgCiudad)
+  AnswerTests: omnitest(correctExpr='summary(autos$mpgCiudad)')
+  Hint: Si quisiéramos el sumario de 'x' tipearíamos 'summary(x)'.
+
+- Class: text
+  Output: Sigamos adelante con otros tipos de gráficos!
+
+- Class: text
+  Output: Un HISTOGRAMA es similar a un gráfico de puntos, pero en vez de mostrar cada valor específico, separa los valores de tus datos en varios contenedores, brindando una representación más condensada de los datos. Las barras más altas indican el rango de valores en el cual la mayoría de los datos se localiza, mientras que las barras más cortas representan el rango de valores en el cual se encuentran menos puntos de datos. En otras palabras, los histogramas dan una visión de la DENSIDAD DE DATOS.
+
+- Class: video
+  Output: Te gustaría ver un breve video (en inglés) en YouTube acerca de histogramas?
+  VideoLink: http://youtu.be/4eLJGG2Ad30
+
+- Class: figure
+  Output: Aquí he creado un histograma usando los datos de millas por galón de TODOS nuestros autos, no solamente los de tamaño mediano con los que trabajamos más arriba. Como podrás notar, los valores de MPG a lo largo del eje x están separados en contenedores con un rango de 5. El segundo contenedor, por ejemplo, agrupa juntos todos los autos que consumen 21-25 MPG en ciudad, y así sucesivamente. Nota que el contenedor a la izquierda de éste contiene los autos que consumen 20 MPG, ya que este valor no puede ser contado en ambos contenedores. La frecuencia de valores en cada contenedor, o el número de autos en cada uno de los intervalos, se reporta a lo largo del eje y.
+  Figure: mod1_histogram.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Simplemente mirando este histograma, puedes decirme cuál intervalo de MPG tiene la más alta frecuencia de valores? Por ejemplo, las frecuencias más bajas se dan en los intervalos 36-40, 41-45, y 46-50.
+  CorrectAnswer: 16-20
+  AnswerChoices: 16-20; 21-25; 26-30; 31-35; 36-40; 41-45; 46-50
+  AnswerTests: omnitest(correctVal='16-20')
+  Hint: Busca los valores correspondientes a la barra más alta en el histograma.
+
+- Class: exact_question
+  Output: Cuántos autos consumen 16-20 MPG en ciudad?
+  CorrectAnswer: 25
+  AnswerTests: omnitest(correctVal='25')
+  Hint: Mira al valor más alto que la barra '16-20' alcanza en el eje y.
+
+- Class: figure
+  Output: He agregado una línea roja a nuestro histograma para ilustrar la respuesta anterior.
+  Figure: mod1_histogram_add.R
+  FigureType: addition
+
+- Class: text
+  Output: Un tipo especial de histograma es el conocido como GRÁFICO DE TRONCO-Y-HOJA. Este plot organiza datos numéricos en el orden de los valores de puntos decimales. La columna izquierda del plot contiene los TRONCOS, o los valores numéricos de los dígitos de 10 para cada uno de los puntos de datos, organizados verticalmente en orden creciente. Las HOJAS están ubicadas en la columna derecha del plot y corresponden a los valores de un dígito por cada punto de datos del correspondiente tronco, organizados horizontalmente en orden creciente. En un gráfico de tronco-y-hojs, el número de hojas es igual al número de elementos en el conjunto de datos. La forma más sencilla de entender un gráfico de tronco-y-hoja es viendo uno!
+
+- Class: video
+  Output: Te gustaría ver un breve video (en inglés) en YouTube acerca de los gráficos de tronco-y-hoja?
+  VideoLink: http://youtu.be/OaJXJduRiIE
+
+- Class: figure
+  Output: He creado un gráfico de tronco-y-hoja en la consola, usando los mismos valores para la variable 'mpgCiudad' que acabamos de usar para nuestro histograma. Como puedes ver, un gráfico de tronco-y-hoja es un tipo de histograma muy útil si lo que quieres ver son las frecuencias de valores específicos en los datos. A menudo, habrá sólo un contenedor por dígitos de diez, pero en este caso, R nos da los mismos contenedores que vimos en nuestro histograma.
+  Figure: mod1_stem.R
+  FigureType: new
+
+- Class: text
+  Output: Ahora es el momento ideal para presentar nuestar última medida de tendencia central, la MODA. La moda de un conjunto de datos es el valor que aparece con más frecuencia.
+
+- Class: exact_question
+  Output: Mirando el gráfico de tronco-y-hoja de arriba, cuál es la moda de MPG?
+  CorrectAnswer: 19
+  AnswerTests: omnitest(correctVal='19')
+  Hint: Mira cuál número se repite más en el gráfico de tronco-y-hoja.
+
+- Class: text
+  Output: Las medidas de tendencia central son muy útiles para rápidamente sumarizar un conjunto de datos y encontrar la mejor representación del valor central o promedio de un conjunto de datos. Sin embargo, estas no son las únicas medidas usadas para describir un conjunto de datos. Es posible que conjuntos de datos bien diferentes muestren exactamente el mismo valor para sus medidas de tendencia central. "Cómo es posible?" puede que te preguntes. Bueno, echemos un vistazo!
+
+- Class: text
+  Output: Otra propiedad importante específica de cada conjunto de datos es la medida de cuán agrupados o dispersos están los datos. Esto se conoce como DISPERSIÓN o VARIABILIDAD. Tres medidas de variabilidad son el rango intercuartilo, la varianza, y la desviación estándar.
+
+- Class: text
+  Output: Un DIAGRAMA DE CAJA, también conocido como DIAGRAMA DE CAJA-Y-BIGOTE, es usado para sumarizar los principales estadísticos descriptivos de un conjunto de datos en particular y nos ayudará a ilustrar el concepto de variabilidad. Recuerdas el comando en R 'summary(autos$precio)' que regresaba los valores mínimo, mediana, media, y máximo de un conjunto de datos, así como otros dos elementos, que había prometido enseñarte luego? Bueno, un gráfico de caja se usa para representar visualmene el MÍNIMO, PRIMER CUARTIL (Q1), MEDIANA, TERCER CUARTIL (Q3), y MÁXIMO de un conjunto de datos.
+
+- Class: video
+  Output: Te gustaría ver un breve video (en inglés) en YouTube sobre los gráficos de caja-y-bigote?
+  VideoLink: http://youtu.be/BXq5TFLvsVw
+
+- Class: figure
+  Output: Aquí he creado un diagrama de caja para representar los datos de los precios de cada uno de los tres tipos de autos (largo, mediano, y pequeño). Notarás que cada una de las 3 figuras esta compuesta por una caja cerrada de cuatro lados con bigotes por arriba y abajo.
+  Figure: mod1_boxplot.R
+  FigureType: new
+
+- Class: text
+  Output: La altura de cada caja forma el RANGO INTERCUARTILO (RIC). A más variabilidad en los datos, mayor el RIC. Por el otro lado, menos variabilidad en los datos implica un RIC más pequeño. La base de la caja en el diagrama de cajas corresponde al valor del primer cuartil (Q1), y la tapa de la caja corresponde al valor del tercer cuartil (Q3). Para calcular el valor del RIC, simplemente sustrae el valor de Q1 del valor de Q3.
+
+- Class: text
+  Output: Los bigores, o líneas, que se extienden por arriba y abajo de cada caja representan aproximadamente el 25% superior y 25% inferior de los puntos de datos, respectivamente. La única excepción es cuando aparecen valores extremos, lo que explicaré brevemente.
+
+- Class: mult_question
+  Output: Mirando al gráfico de cajas, cuál es el rango intercuartilo aproximado para los vehículos de tamaño mediano?
+  CorrectAnswer: 16-20
+  AnswerChoices: 10-15; 16-20; 21-25; 26-30
+  AnswerTests: omnitest(correctVal='16-20')
+  Hint: Sustrae el valor de Q1 del valor de Q3. El valor de Q1 es el mínimo valor contenido en la caja y el valor de Q3 es el máximo valor contenido en la caja.
+
+- Class: text
+  Output: Miremos más de cerca a cómo los cuartiles son calculados. Empezamos por ordenar los datos de menor a mayor, así mismo como hicimos para calcular la mediana. El primer cuartil (Q1), también conocido como el PERCENTIL 25º (dado que el 25% de los puntos de datos caen en o por debajo de este valor), es simplemente la mediana de la primera mitad de los datos ordenados. Del mismo modo, el tercer cuartil (Q3), también conocido como el PERCENTIL 75º, es la mediana de la segunda mitad de los datos ordenados.
+
+- Class: figure
+  Output: Como se muestra en esta figura, la línea horizontal azul muestra cómo encontrar el valor para el primer cuartil. La línea horizontal verde muestra cómo encontrar el valor para el tercer cuartil. El rango intercuartilo es el rango de valores de los datos contenidos entre estas dos líneas.
+  Figure: mod1_boxplot_add.R
+  FigureType: addition
+
+- Class: figure
+  Output: Mira nuevamente a nuestro gráfico de cajas de precio vs. tipo de auto. Puede que te pongas a pensar, "Qué es ese círculo por encima del gráfico de caja para autos de tamaño mediano, y por qué no hay ningún círculo por encima del diagrama de caja para autos grandes?" Esos círculos representan VALORES ATÍPICOS ("outliers") en el conjunto de datos. Los valores atípicos son útiles en la identificación de distribuciones marcadamente asimétricas, y pueden indicar al científico un error en la recolección o ingreso de datos. Existen muchas convecciones para identificar valores atípicos en un conjunto de datos.
+  Figure: mod1_boxplot.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Cuando miras al diagrama de cajas, cuáles tipos de autos parecen tener valores atípicos? Incluye todos los tipos de autos que correspondan, separados por comas.
+  CorrectAnswer: chico, mediano
+  AnswerChoices: chico, mediano; grande, chico; grande, mediano
+  AnswerTests: omnitest(correctVal='chico, mediano')
+  Hint: Fíjate en los diagramas de cajas de los distintos tipos de autos que tengan círculos por encima o debajo.
+
+- Class: text
+  Output: Dado que hemos terminado nuestra introducción al rango intercuartilo, ahora echaremos un vistazo a los dos otros valores usados cuando se describe la dispersión de los datos, la varianza y la desviación estándar. Matemáticamente, la VARIANZA es el promedio del cuadrado de las diferencias con respecto a la media. No te preocupes si esto te parece un poco confuso. Intuitivamente, la varianza simplemente representa la distancia total de los datos con respecto a la media de los datos.
+
+- Class: text
+  Output: Una varianza pequeña indica que los puntos de datos tienden a estar localizados cerca del valor de la media, mientras que una varianza elevada indica que los puntos de datos están alejandos de la media.
+
+- Class: text
+  Output: Una medida más convencional de variabilidad es la DESVIACIÓN ESTÁNDAR, la que es calculada como la raíz cuadrada de la varianza. Los estadísticos habitualmente hacen referencia a la desviación estándar dado que se expresa en las mismas unidades que los valores originales de los datos. Si estás interseado en los detalles de cómo la varianza y la desviación estándar se calculan, te recomiendo veas el siguiente video.
+
+- Class: video
+  Output: Te gustaría ver un breve vídeo (en inglés) en YouTube acerca de la varianza y la desviación estándar?
+  VideoLink: http://youtu.be/E4HAYd0QnRc
+
+- Class: cmd_question
+  Output: Usando el comando en R 'sd()', calcula la desviación estándar del subconjunto de datos llamado 'mpg.mediano'.
+  CorrectAnswer: sd(mpg.mediano)
+  AnswerTests: omnitest(correctExpr='sd(mpg.mediano)')
+  Hint: Si quisieras la desviación estándar de 'x', tipearías 'sd(x)'.
+
+- Class: exact_question
+  Output: Ahora que has calculado la desviación estándar de estos datos, puedes darme la varianza de los datos? Para elevar una cantidad al cuadrado en R, la notación es 'cantidad^2', donde el símbolo '^' significa 'elevado a la potencia de'.
+  CorrectAnswer: 3.593072
+  AnswerTests: omnitest(correctVal='3.593072')
+  Hint: La varianza corresponde al cuadrado de la desviación estándar.
+
+- Class: text
+  Output: Para demostrar las diferencias en variabilidad, haré referencia nuevamente al gráfico de cajas de tipo de auto vs. precio.
+
+- Class: figure
+  Output: Como puedes ver en el diagrama de cajas, los datos de los precios para autos 'medianos' varían de 15 a 62, abarcando un rango de aproximadamente 50. Esto es mucha más variación que la observada para autos 'chicos', los cuales van de alrededor de 5 a 15, abarcando un rango de aproximadamente 10. Por lo tanto, dado que el rango es mucho mayor para autos 'medianos', los precios de los autos 'medianos' presentan una variabilidad mucho mayor que los precios de los autos 'chicos'.
+  Figure: mod1_boxplot.R
+  FigureType: new
+
+- Class: text_question
+  Output: Ahora es tu turno! Es la variabilidad de precios de los autos 'grandes' mayor o menor que la variabilidad de los autos 'chicos'?
+  CorrectAnswer: mayor
+  AnswerTests: omnitest(correctVal='mayor')
+  Hint: Mira si el rango de los autos 'grandes' es mayor o menor que el rango de los autos 'chicos'.
+
+- Class: text
+  Output: Mientras que la dispersión mide la variabilidad desde la media en un conjunto de datos, otra propiedad importante es la forma de la distribución de los datos. Aprenderemos más sobre distribuciones en lecciones futuras, pero por ahora simplemente piensa en la DISTRIBUCIÓN como si fuese un histograma.
+
+- Class: text
+  Output: Los histogramas son particularmente útiles para visualizar y describir la forma de la distribución de los datos. Una distribución de datos puede presentar una desviación hacia la izquierda, una desviación hacia la derecha, o ninguna desviación hacia los lados. La ASIMETRÍA es una medida de la extensión con la cual la distribución de datos se 'recuesta' hacia un lado u otro.
+
+- Class: figure
+  Output: Una distribución con asimetría hacia la izquierda es una en la cual la COLA izquierda del gráfico es más larga. En otras palabras, en un histograma la mayor parte de la distribución se localiza hacia la derecha de la media. Esta distribución también se dice que tiene asimetría izquierda. Cuando una distribución tiene asimetría izquierda, el valor de la MEDIA es menor al valor de la MEDIANA, y por lo tanto la MEDIA se localiza hacia la izquierda de la distribución. En este gráfico, la línea verde representa la mediana y la línea azul representa la media.
+  Figure: mod1_leftskew.R
+  FigureType: new
+
+- Class: figure
+  Output: Por el otro lado, una distribución con asimetría hacia la derecha es una en la cual la cola derecha es más larga, de modo a que la mayoría de los datos cae hacia la izquierda de la media en un histograma. Esta distribución se dice que tiene asimetría derecha. Cuando una distribución presenta asimetría derecha, el valor de la MEDIA es mayor al valor de la MEDIANA, y por lo tanto la MEDIA se localiza hacia la derecha de la distribución. En este gráfico, la línea verde representa la mediana y la línea azul representa la media.
+  Figure: mod1_rightskew.R
+  FigureType: new
+
+- Class: figure
+  Output: Un gráfico que no presenta asimetría es uno en el cual las colas a ambos lados de la media se balancean mutuamente, y se conoce también como gráfico simétrico. Cuando la distribución es simétrica, la MEDIA y la MEDIANA presentan aproximadamente el mismo valor. En este gráfico, la línea verde representa la mediana y la línea azul representa la media. La línea verde es la única visible debido a que la media y la mediana presentan casi exactamente el mismo valor.
+  Figure: mod1_symmetric.R
+  FigureType: new
+
+- Class: figure
+  Output: Echemos un vistazo nuevamente al histograma que creamos previamente, el que represetna la distribución de los valores para MPG en ciudad por cada uno de los 54 autos de nuestro conjunto de datos 'autos'.
+  Figure: mod1_histogram.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Cómo clasificarías la forma de la distribución representada por este histograma?
+  CorrectAnswer: Asimetría derecha
+  AnswerChoices: Simétrica; Asimetría derecha; Asimetría izquierda
+  AnswerTests: omnitest(correctVal='Asimetría derecha')
+  Hint: Fíjate cuál cola se extiende más. El gráfico se dice que presenta asimetría de ese lado.
+
+- Class: mult_question
+  Output: Considerando el mismo histograma, y teniendo presente la pregunta previa, esperarías que la MEDIANA fuese mayor a, menor a, o igual a la MEDIA?
+  CorrectAnswer: Menor a
+  AnswerChoices: Mayor a; Menor a; Igual a
+  AnswerTests: omnitest(correctVal='Menor a')
+  Hint: Ten en cuenta que los puntos de datos que crean la cola larga del gráfico tenderán a 'estirar' la media en esa dirección. La mediana no se afecta por cuál lejos se encuentren los puntos de datos.
+
+- Class: text
+  Output: Hasta ahora, he cubierto técnicas útiles para visualizar variables numéricas, pero qué hay de las variables categóricas? Bueno, una forma útil de mostrar una variable categórica única es mediante un GRÁFICO DE BARRAS, en el cual los distintos niveles de las categorías se localizan en el eje x y los valores numéricos correspondientes a cada nivel se localizan en el eje y.
+
+- Class: figure
+  Output: Aquí se muestra un GRÁFICO DE BARRAS representando el precio promedio de cada uno de los 3 tipos de autos (grande, mediano, chico). Debido a que hay muchos puntos de datos en cada nivel, la altura de cada barra es el precio MEDIO (en $1000s) de todos los autos en ese nivel.
+  Figure: mod1_bargraph.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Según el gráfico de barras, cuál es el tipo de auto más caro, en promedio? Cuál es el más barato? Responde ambas preguntas en el mismo orden.
+  CorrectAnswer: mediano, chico
+  AnswerChoices: mediano, chico; grande, chico; chico, mediano; grande, mediano
+  AnswerTests: omnitest(correctVal='mediano, chico')
+  Hint: Mira el tipo correspondiente de auto con la barra más alta para determinar cuál es el auto más caro. Mira el tipo correspondiente de auto con la barra más corta para determinar cuál es el más barato.
+
+- Class: figure
+  Output: La barra 'mediano' ha sido resaltada en verde y corresponde al tipo de auto más caro en promedio. La barra 'chico' ha sido resaltada en azul y corresponde al tipo de auto más barato en promedio.
+  Figure: mod1_bargraph_add.R
+  FigureType: addition
+
+- Class: mult_question
+  Output: Según el gráfico de barras, cuál es el rango de precio promedio para un auto 'grande' (en $1000s)?
+  CorrectAnswer: 21-25
+  AnswerChoices: 10-15; 16-20; 21-25
+  AnswerTests: omnitest(correctVal='21-25')
+  Hint: Mira el valor más alto en el eje y que alcanza la barra 'grande'.
+
+- Class: figure
+  Output: La línea horizontal roja agregada al gráfico muestra cómo responder la pregunta previa.
+  Figure: mod1_bargraph_add1.R
+  FigureType: addition
+
+- Class: text
+  Output: Hasta ahora, cada gráfico que he presentado ha involucrado sólo una variable. Pero, qué si estás intentando analizar dos variables? Un GRÁFICO DE DISPERSIÓN provee una vista comparativa de los datos para dos variables numéricas, con una en el eje x y la otra en el eje y. Este tipo de gráfico es útil porque te permite ver si las dos variables están relacionadas y en qué grado.
+
+- Class: figure
+  Output: Aquí va un ejemplo de un gráfico de dispersión.
+  Figure: mod1_scatter.R
+  FigureType: new
+
+- Class: mult_question
+  Output: De las tres variables discutidas previamente (continua, discreta, y categórica), cuál crees que sería más apropiada para ser usada en un gráfico de dispersión?
+  CorrectAnswer: Continua
+  AnswerChoices: Continua; Discreta; Categórica
+  AnswerTests: omnitest(correctVal='Continua')
+  Hint: Piensa en cuál de los tres tipos de variables tiene un número indefinido de posibles valores.
+
+- Class: text
+  Output: Para concluir esta lección, evaluaremos qué tan bien has aprendido acerca de los distintos tipos de gráficos que he discutido. Después de que cada gráfico aparezca, haz tu mejor intento de clasificarlo. Te sorprenderás al ver cuánto ya has aprendido!
+
+- Class: figure
+  Output: Aquí va el primer gráfico.
+  Figure: mod1_bargraph.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Qué tipo de gráfico se muestra aquí?
+  CorrectAnswer: Gráfico de barras
+  AnswerChoices: Gráfico de barras; Gráfico de puntos; Histograma; Gráfico de tronco-y-hoja; Gráfico de caja; Gráfico de dispersión
+  AnswerTests: omnitest(correctVal='Gráfico de barras')
+  Hint: Este tipo de gráfico se usa para mostrar una variable categórica única.
+
+- Class: figure
+  Output: Aquí va otro.
+  Figure: mod1_scatter.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Qué tipo de gráfico se muestra aquí?
+  CorrectAnswer: Gráfico de dispersión
+  AnswerChoices: Gráfico de barras; Gráfico de puntos; Histograma; Gráfico de tronco-y-hoja; Gráfico de caja; Gráfico de dispersión
+  AnswerTests: omnitest(correctVal='Gráfico de dispersión')
+  Hint: Este tipo de gráfico se usa para mostrar la relación entre dos variables continuas.
+
+- Class: figure
+  Output: Y otro más.
+  Figure: mod1_dotplot.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Qué tipo de gráfico se muestra aquí?
+  CorrectAnswer: Gráfico de puntos
+  AnswerChoices: Gráfico de barras; Gráfico de puntos; Histograma; Gráfico de tronco-y-hoja; Gráfico de caja; Gráfico de dispersión
+  AnswerTests: omnitest(correctVal='Gráfico de puntos')
+  Hint: Este tipo de gráfico se usa para transmitir visualmente los valores de una variable usando únicamente un eje.
+
+- Class: figure
+  Output: Sólo algunos más!
+  Figure: mod1_histogram.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Qué tipo de gráfico se muestra aquí?
+  CorrectAnswer: Histograma
+  AnswerChoices: Gráfico de barras; Gráfico de puntos; Histograma; Gráfico de tronco-y-hoja; Gráfico de caja; Gráfico de dispersión
+  AnswerTests: omnitest(correctVal='Histograma')
+  Hint: Este tipo de gráfico separa los valores de tus datos en varios contenedores.
+
+- Class: figure
+  Output: Vamos avanzando!
+  Figure: mod1_boxplot.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Qué tipo de gráfico se muestra aquí?
+  CorrectAnswer: Gráfico de caja
+  AnswerChoices: Gráfico de barras; Gráfico de puntos; Histograma; Gráfico de tronco-y-hoja; Gráfico de caja; Gráfico de dispersión
+  AnswerTests: omnitest(correctVal='Gráfico de caja')
+  Hint: Este tipo de gráfico se usa para sumarizar las principales estadísticas descriptivas de un conjunto de datos en particular.
+
+- Class: figure
+  Output: Uno último!
+  Figure: mod1_stem.R
+  FigureType: new
+
+- Class: mult_question
+  Output: Qué tipo de gráfico se muestra arriba?
+  CorrectAnswer: Gráfico de tronco-y-hoja
+  AnswerChoices: Gráfico de barras; Gráfico de puntos; Histograma; Gráfico de tronco-y-hoja; Gráfico de caja; Gráfico de dispersión
+  AnswerTests: omnitest(correctVal='Gráfico de tronco-y-hoja')
+  Hint: Este tipo de gráfico organiza datos numéricos ordenándolos por el lugar del valor decimal.
+
+- Class: text
+  Output: FELICIDADES! Has completado esta lección! Espero tenerte de vuelta para muchas lecciones más en el futuro.
+
+- Class: mult_question
+  Output: Quieres informar a tu Instructor que has completado exitosamente esta lección de evaluación?
+  CorrectAnswer: NULL
+  AnswerChoices: Sí; No
+  AnswerTests: notify()
+  Hint: NULL

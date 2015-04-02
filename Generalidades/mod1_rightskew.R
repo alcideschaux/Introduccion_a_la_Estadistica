@@ -1,0 +1,5 @@
+set.seed(111)
+x <- rnorm(1000)
+dat <- abs(x)
+hist(dat, main = "Asimetría Derecha", xlab = "", ylab = "Frecuencia")
+abline(v = c(mean(dat), median(dat)), col = (c("blue", "green")), lwd = 3)
